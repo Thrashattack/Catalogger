@@ -1,0 +1,28 @@
+{
+  "name": "catalogger",
+  "version": "1.0.0",
+  "description": "Catalogador de velas de DayTrade e aplicador de estratégias com geração de relatórios",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thrashattack/Catalogger.git"
+  },
+  "author": "Carlos Cunha & Yan Ajiki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Thrashattack/Catalogger/issues"
+  },
+  "homepage": "https://github.com/Thrashattack/Catalogger#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.1",
+    "nodemon": "^1.19.3",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
