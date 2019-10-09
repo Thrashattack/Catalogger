@@ -4,7 +4,10 @@
   "description": "Catalogador de velas de DayTrade e aplicador de estratégias com geração de relatórios",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "ts-node service/index.ts --watch ./",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build_run": "tsc service/index.ts",
+    "run_build": "node build/index.js"
   },
   "repository": {
     "type": "git",
