@@ -1,7 +1,21 @@
+// node-typescript/tsconfig.json
 {
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-        "sourceMap": true
-    }
+        "outDir": "./build",
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "esModuleInterop": true
+    },
+    "include": [
+        "**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.test.ts"
+    ]
 }
