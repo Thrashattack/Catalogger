@@ -5,11 +5,32 @@
 
 > Node.js
 
+### Dev Build 
+`$ npm run dev`
+`$ yarn dev`
+
+
+### Prod Build && run
+
+`$ npm run prod`
+`$ yarn prod`
+
+### Tests 
+- Unit : `$ npm run test` `$ yarn test`
+- Integrated: `$ npm run integrated_test` `$ yarn integrated_test`
+
+### Api Docs 
+`$ npm run build_doc`
+`$ yarn build_doc`
+
+- Windows: ``$ npm run run_doc_windows`` ``$ yarn run_doc_windows``
+- Linux: ``$ npm run run_doc_linux`` ``$ yarn run_doc_linux``
 
 ### Docker 
 
 `docker-compose.yml` 
 - Transpilado e Buildado para produção 
+` $ docker compose up `
 
 
 ### Padrão de Projeto 
