@@ -28,6 +28,7 @@ export default class Catalogger {
             candlesByFive[j++][4] = (this._candles[i + 4]);
         }
 
+        let fiveCandlesBeforeEachHit: Array<Array<Candle>> = [];
         let theOptionShouldBe = 12;
         let winRateFinal = 0;
         let winRateBeforeFirstHit = 0;
@@ -45,6 +46,7 @@ export default class Catalogger {
 
         let firstHit = false;
         let wasHit = false;
+        let count = 0;
         // Contabilização da Estratégia
         candlesByFive.forEach(fiveCandles => {
             let one = fiveCandles[0];
@@ -86,47 +88,49 @@ export default class Catalogger {
                         secondMgWinRate++;
                         winRateFinal++
                     } else {
+                        fiveCandlesBeforeEachHit[hitRate] = fiveCandles;
                         if (!firstHit) firstHit = true;
                         if (wasHit) hitAfterHit++;
                         wasHit = true;
                         hitRate++;
                         winRateBetweenHits[hitRate] = 0;
                     }
+                    count++;
                 }
-
-                let red = 0;
-                let green = 0;
-                for (let i = 2; i <= 4; i++) {
-                    if (fiveCandles[i].cor == 0) green++;
-                    else if (fiveCandles[i].cor == 1) red++;
-
-                }
-
-                if (green > 1) theOptionShouldBe = 1;
-                else if (red > 1) theOptionShouldBe = 0;
-                else theOptionShouldBe = 3;
             }
+            let red = 0;
+            let green = 0;
+            for (let i = 2; i <= 4; i++) {
+                if (fiveCandles[i].cor == 0) green++;
+                else if (fiveCandles[i].cor == 1) red++;
+
+            }
+
+            if (green > 1) theOptionShouldBe = 1;
+            else if (red > 1) theOptionShouldBe = 0;
+            else theOptionShouldBe = 3;
+
         });
 
-        firstOrderWinRate = (firstOrderWinRate / winRateFinal) * 100;
-        firstMgWinRate = (firstMgWinRate / winRateFinal) * 100;
-        secondMgWinRate = (secondMgWinRate / winRateFinal) * 100;
-        hitRate = (hitRate / ((this._candles.length) / 5) * 100);
-        winRateAfterHit = (winRateAfterHit / hitRate) * 100;
-        firstOrderWinRateAfterHit = (firstOrderWinRateAfterHit / hitRate) * 100;
-        firstMgWinRateAfterHit = (firstMgWinRateAfterHit / hitRate) * 100;
-        secondMgWinRateAfterHit = (secondMgWinRateAfterHit / hitRate) * 100;
-        hitAfterHit = (hitAfterHit / hitRate) * 100;
-        winRateFinal = (winRateFinal / ((this._candles.length) / 5) * 100);
-        winRateBeforeFirstHit = (winRateBeforeFirstHit / winRateBeforeFirstHit) * 100;
+        firstOrderWinRate = Number.parseFloat(((firstOrderWinRate / count) * 100.00).toFixed(2));
+        firstMgWinRate = Number.parseFloat(((firstMgWinRate / count) * 100.00).toFixed(2));
+        secondMgWinRate = Number.parseFloat(((secondMgWinRate / count) * 100.00).toFixed(2));
+        hitRate = Number.parseFloat(((hitRate / count) * 100.00).toFixed(2));
+        firstOrderWinRateAfterHit = Number.parseFloat(((firstOrderWinRateAfterHit / winRateAfterHit) * 100.00).toFixed(2));
+        firstMgWinRateAfterHit = Number.parseFloat(((firstMgWinRateAfterHit / winRateAfterHit) * 100.00).toFixed(2));
+        secondMgWinRateAfterHit = Number.parseFloat(((secondMgWinRateAfterHit / winRateAfterHit) * 100.00).toFixed(2));
+        hitAfterHit = Number.parseFloat(((hitAfterHit / hitRate) * 100.00).toFixed(2));
+        winRateAfterHit = Number.parseFloat(((1 - hitAfterHit) * 100.00).toFixed(2));
+        winRateFinal = Number.parseFloat(((winRateFinal / count) * 100.00).toFixed(2));
+        winRateBeforeFirstHit = Number.parseFloat(((winRateBeforeFirstHit / winRateBeforeFirstHit) * 100.00).toFixed(2));
         winRateBetweenHits.forEach(winRate => {
-            winRate = (winRate / hitRate) * 100;
-        });
+            winRate = Number.parseFloat(((winRate / hitRate) * 100.00).toFixed(2));
+        })
 
 
         this._mhi.inputData(this._candles.length, winRateFinal, winRateBeforeFirstHit, winRateBetweenHits,
             firstOrderWinRate, firstMgWinRate, secondMgWinRate, hitRate, winRateAfterHit, firstOrderWinRateAfterHit,
-            firstMgWinRateAfterHit, secondMgWinRateAfterHit, hitAfterHit, [new Candle('R')])
+            firstMgWinRateAfterHit, secondMgWinRateAfterHit, hitAfterHit, fiveCandlesBeforeEachHit)
     }
 
     public toResponse() {
