@@ -3,13 +3,13 @@ export default class Candle {
     constructor(cor: String) {
         const cor_temp = cor.toUpperCase();
         switch (cor_temp) {
-            case "VERDE":
+            case "G":
                 this._cor = 0;
                 break;
-            case "VERMELHA":
+            case "R":
                 this._cor = 1;
                 break;
-            case "CINZA":
+            case "N":
                 this._cor = 2;
                 break;
             default:

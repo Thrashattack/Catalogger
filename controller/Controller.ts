@@ -135,7 +135,6 @@ export default class Controller {
             }
         });
         catalogo.calculaMHI();
-        catalogo.calculaX();
         responseArray = catalogo.toResponse();
         res.status(202);
         res.json(responseArray);
