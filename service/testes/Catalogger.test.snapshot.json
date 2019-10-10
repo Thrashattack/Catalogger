@@ -1,0 +1,13 @@
+{
+    "mhi": {
+        "winRate": 91.67,
+        "firstOrderWinRate": 62.50,
+        "firstMGWinRate": 20.83,
+        "secondMGWinRate": 8.33,
+        "Hits": 8.33,
+        "winRateAfterHit": 100,
+        "firstOrderAfterHitWinRate": 100,
+        "firstMGOrderAfterHitWinRate": 0,
+        "SecondMGOrderAfterHitWinRate": 0
+    }
+}

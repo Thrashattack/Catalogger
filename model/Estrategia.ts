@@ -3,7 +3,7 @@ export default class Estrategia {
     private size: Number = 0;
     private winRateFinal: Number = 0;
     private winRateBeforeFirstHit: Number = 0;
-    private winRateBetweenHits: Number = 0;
+    private winRateBetweenHits: Array<Number>;
     private firstOrderWinRate: Number = 0;
     private firstMgWinRate: Number = 0;
     private secondMgWinRate: Number = 0;
@@ -17,10 +17,11 @@ export default class Estrategia {
 
     constructor() {
         this.fiveCandlesBeforeEachHit = [];
+        this.winRateBetweenHits = [];
     }
 
     public inputData(size: Number, winRateFinal: Number, winRateBeforeFirstHit: Number,
-        winRateBetweenHits: Number, firstOrderWinRate: Number, firstMgWinRate: Number,
+        winRateBetweenHits: Array<Number>, firstOrderWinRate: Number, firstMgWinRate: Number,
         secondMgWinRate: Number, hitRate: Number, winRateAfterHit: Number,
         firstOrderWinRateAfterHit: Number, firstMgWinRateAfterHit: Number,
         secondMgWinRateAfterHit: Number, hitAfterHit: Number, fiveCandlesBeforeEachHit: [Candle]) {
