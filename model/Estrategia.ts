@@ -2,7 +2,7 @@ import Candle from './Candle'
 export default class Estrategia {
     private size: Number = 0;
     private winRateFinal: Number = 0;
-    private winRateBeforeFirstHit: Number = 0;
+    private winsBeforeFirstHit: Number = 0;
     private winRateBetweenHits: Array<Number>;
     private firstOrderWinRate: Number = 0;
     private firstMgWinRate: Number = 0;
@@ -20,7 +20,7 @@ export default class Estrategia {
         this.winRateBetweenHits = [];
     }
 
-    public inputData(size: Number, winRateFinal: Number, winRateBeforeFirstHit: Number,
+    public inputData(size: Number, winRateFinal: Number, winsBeforeFirstHit: Number,
         winRateBetweenHits: Array<Number>, firstOrderWinRate: Number, firstMgWinRate: Number,
         secondMgWinRate: Number, hitRate: Number, winRateAfterHit: Number,
         firstOrderWinRateAfterHit: Number, firstMgWinRateAfterHit: Number,
@@ -28,7 +28,7 @@ export default class Estrategia {
 
         this.size = size;
         this.winRateFinal = winRateFinal;
-        this.winRateBeforeFirstHit = winRateBeforeFirstHit;
+        this.winsBeforeFirstHit = winsBeforeFirstHit;
         this.winRateBetweenHits = winRateBetweenHits;
         this.firstOrderWinRate = firstOrderWinRate;
         this.firstMgWinRate = firstMgWinRate;
@@ -46,7 +46,7 @@ export default class Estrategia {
         return {
             size: this.size,
             winRateFinal: this.winRateFinal,
-            winRateBeforeFirstHit: this.winRateBeforeFirstHit,
+            winsBeforeFirstHit: this.winsBeforeFirstHit,
             winRateBetweenHits: this.winRateBetweenHits,
             firstOrderWinRate: this.firstOrderWinRate,
             firstMgWinRate: this.firstMgWinRate,

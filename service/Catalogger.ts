@@ -29,7 +29,7 @@ export default class Catalogger {
         }
 
         let fiveCandlesBeforeEachHit: Array<Array<Candle>> = [];
-        let theOptionShouldBe = 12;
+        let theOptionShouldBe = 3;
         let winRateFinal = 0;
         let winRateBeforeFirstHit = 0;
         let winRateBetweenHits: Array<number> = [];
@@ -51,52 +51,48 @@ export default class Catalogger {
         candlesByFive.forEach(fiveCandles => {
             let one = fiveCandles[0];
             let two = fiveCandles[1];
-            let three = fiveCandles[2]; // 3 últimas velas , MHI = menor ocorrencia 
-            // let four = fiveCandles[3];
-            // let five = fiveCandles[4];
+            let three = fiveCandles[2];
             if (theOptionShouldBe !== 3) {
-                if (theOptionShouldBe !== 12) {
-                    if (one.cor == theOptionShouldBe) {
-                        if (!firstHit) winRateBeforeFirstHit++;
-                        if (wasHit) {
-                            wasHit = false;
-                            firstOrderWinRateAfterHit++;
-                            winRateAfterHit++;
-                            winRateBetweenHits[hitRate]++;
-                        }
-                        firstOrderWinRate++;
-                        winRateFinal++
-
-                    } else if (two.cor == theOptionShouldBe) {
-                        if (!firstHit) winRateBeforeFirstHit++;
-                        if (wasHit) {
-                            wasHit = false;
-                            winRateAfterHit++;
-                            firstMgWinRateAfterHit++;
-                            winRateBetweenHits[hitRate]++;
-                        }
-                        firstMgWinRate++;
-                        winRateFinal++
-                    } else if (three.cor == theOptionShouldBe) {
-                        if (!firstHit) winRateBeforeFirstHit++;
-                        if (wasHit) {
-                            wasHit = false;
-                            winRateAfterHit++;
-                            secondMgWinRateAfterHit++;
-                            winRateBetweenHits[hitRate]++;
-                        }
-                        secondMgWinRate++;
-                        winRateFinal++
-                    } else {
-                        fiveCandlesBeforeEachHit[hitRate] = fiveCandles;
-                        if (!firstHit) firstHit = true;
-                        if (wasHit) hitAfterHit++;
-                        wasHit = true;
-                        hitRate++;
-                        winRateBetweenHits[hitRate] = 0;
+                if (one.cor == theOptionShouldBe) {
+                    if (!firstHit) winRateBeforeFirstHit++;
+                    if (wasHit) {
+                        wasHit = false;
+                        firstOrderWinRateAfterHit++;
+                        winRateAfterHit++;
+                        winRateBetweenHits[hitRate]++;
                     }
-                    count++;
+                    firstOrderWinRate++;
+                    winRateFinal++
+
+                } else if (two.cor == theOptionShouldBe) {
+                    if (!firstHit) winRateBeforeFirstHit++;
+                    if (wasHit) {
+                        wasHit = false;
+                        winRateAfterHit++;
+                        firstMgWinRateAfterHit++;
+                        winRateBetweenHits[hitRate]++;
+                    }
+                    firstMgWinRate++;
+                    winRateFinal++
+                } else if (three.cor == theOptionShouldBe) {
+                    if (!firstHit) winRateBeforeFirstHit++;
+                    if (wasHit) {
+                        wasHit = false;
+                        winRateAfterHit++;
+                        secondMgWinRateAfterHit++;
+                        winRateBetweenHits[hitRate]++;
+                    }
+                    secondMgWinRate++;
+                    winRateFinal++
+                } else {
+                    fiveCandlesBeforeEachHit[hitRate] = fiveCandles;
+                    if (!firstHit) firstHit = true;
+                    if (wasHit) hitAfterHit++;
+                    wasHit = true;
+                    hitRate++;
+                    winRateBetweenHits[hitRate] = 0;
                 }
+                count++;
             }
             let red = 0;
             let green = 0;
@@ -122,7 +118,6 @@ export default class Catalogger {
         hitAfterHit = Number.parseFloat(((hitAfterHit / hitRate) * 100.00).toFixed(2));
         winRateAfterHit = Number.parseFloat(((1 - hitAfterHit) * 100.00).toFixed(2));
         winRateFinal = Number.parseFloat(((winRateFinal / count) * 100.00).toFixed(2));
-        winRateBeforeFirstHit = Number.parseFloat(((winRateBeforeFirstHit / winRateBeforeFirstHit) * 100.00).toFixed(2));
         winRateBetweenHits.forEach(winRate => {
             winRate = Number.parseFloat(((winRate / hitRate) * 100.00).toFixed(2));
         })
