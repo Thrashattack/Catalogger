@@ -21,11 +21,11 @@ export default class Catalogger {
         // 5 Velas - Tempo entre uma opçao e outra
         for (let i = 0; i < this._candles.length - 5; i += 5) {
             candlesByFive[j] = []
-            candlesByFive[j].push(this._candles[i]);
-            candlesByFive[j].push(this._candles[i + 1]);
-            candlesByFive[j].push(this._candles[i + 2]);
-            candlesByFive[j].push(this._candles[i + 3]);
-            candlesByFive[j++].push(this._candles[i + 4]);
+            candlesByFive[j][0] = (this._candles[i]);
+            candlesByFive[j][1] = (this._candles[i + 1]);
+            candlesByFive[j][2] = (this._candles[i + 2]);
+            candlesByFive[j][3] = (this._candles[i + 3]);
+            candlesByFive[j++][4] = (this._candles[i + 4]);
         }
 
         let theOptionShouldBe = 12;
@@ -50,88 +50,79 @@ export default class Catalogger {
             let one = fiveCandles[0];
             let two = fiveCandles[1];
             let three = fiveCandles[2]; // 3 últimas velas , MHI = menor ocorrencia 
-            let four = fiveCandles[3];
-            let five = fiveCandles[4];
+            // let four = fiveCandles[3];
+            // let five = fiveCandles[4];
+            if (theOptionShouldBe !== 3) {
+                if (theOptionShouldBe !== 12) {
+                    if (one.cor == theOptionShouldBe) {
+                        if (!firstHit) winRateBeforeFirstHit++;
+                        if (wasHit) {
+                            wasHit = false;
+                            firstOrderWinRateAfterHit++;
+                            winRateAfterHit++;
+                            winRateBetweenHits[hitRate]++;
+                        }
+                        firstOrderWinRate++;
+                        winRateFinal++
 
-            if (theOptionShouldBe !== 12) {
-                if (one.cor == theOptionShouldBe) {
-                    if (!firstHit) winRateBeforeFirstHit++;
-                    if (wasHit) {
-                        wasHit = false;
-                        firstOrderWinRateAfterHit++;
-                        winRateAfterHit++;
-                        winRateBetweenHits[hitRate]++;
+                    } else if (two.cor == theOptionShouldBe) {
+                        if (!firstHit) winRateBeforeFirstHit++;
+                        if (wasHit) {
+                            wasHit = false;
+                            winRateAfterHit++;
+                            firstMgWinRateAfterHit++;
+                            winRateBetweenHits[hitRate]++;
+                        }
+                        firstMgWinRate++;
+                        winRateFinal++
+                    } else if (three.cor == theOptionShouldBe) {
+                        if (!firstHit) winRateBeforeFirstHit++;
+                        if (wasHit) {
+                            wasHit = false;
+                            winRateAfterHit++;
+                            secondMgWinRateAfterHit++;
+                            winRateBetweenHits[hitRate]++;
+                        }
+                        secondMgWinRate++;
+                        winRateFinal++
+                    } else {
+                        if (!firstHit) firstHit = true;
+                        if (wasHit) hitAfterHit++;
+                        wasHit = true;
+                        hitRate++;
+                        winRateBetweenHits[hitRate] = 0;
                     }
-                    firstOrderWinRate++;
-                    winRateFinal++
-
-                } else if (two.cor == theOptionShouldBe) {
-                    if (!firstHit) winRateBeforeFirstHit++;
-                    if (wasHit) {
-                        wasHit = false;
-                        winRateAfterHit++;
-                        firstMgWinRateAfterHit++;
-                        winRateBetweenHits[hitRate]++;
-                    }
-                    firstMgWinRate++;
-                    winRateFinal++
-                } else if (three.cor == theOptionShouldBe) {
-                    if (!firstHit) winRateBeforeFirstHit++;
-                    if (wasHit) {
-                        wasHit = false;
-                        winRateAfterHit++;
-                        secondMgWinRateAfterHit++;
-                        winRateBetweenHits[hitRate]++;
-                    }
-                    secondMgWinRate++;
-                    winRateFinal++
-                } else {
-                    if (!firstHit) firstHit = true;
-                    if (wasHit) hitAfterHit++;
-                    wasHit = true;
-                    hitRate++;
                 }
-            }
 
-            if (five.cor == 0 && four.cor == 0 && three.cor == 0) {
-                theOptionShouldBe = 1;
-            } else if (five.cor == 1 && four.cor == 1 && three.cor == 1) {
-                theOptionShouldBe = 0;
-            } else if (five.cor == 2 && four.cor == 2 && three.cor == 2) {
-                theOptionShouldBe = 2
-            } else {
-                if (five.cor == 0 && four.cor == 0) {
-                    theOptionShouldBe = 1;
-                } else if (five.cor == 1 && four.cor == 1) {
-                    theOptionShouldBe = 0;
-                } else if (four.cor == 1 && three.cor == 1) {
-                    theOptionShouldBe = 0;
-                } else if (four.cor == 0 && three.cor == 0) {
-                    theOptionShouldBe = 1;
-                } else if (five.cor == 1 && three.cor == 1) {
-                    theOptionShouldBe = 0;
-                } else if (five.cor == 0 && three.cor == 0) {
-                    theOptionShouldBe = 1;
-                } else {
-                    theOptionShouldBe = 2;
+                let red = 0;
+                let green = 0;
+                for (let i = 2; i <= 4; i++) {
+                    if (fiveCandles[i].cor == 0) green++;
+                    else if (fiveCandles[i].cor == 1) red++;
+
                 }
+
+                if (green > 1) theOptionShouldBe = 1;
+                else if (red > 1) theOptionShouldBe = 0;
+                else theOptionShouldBe = 3;
             }
         });
 
-        winRateFinal = (winRateFinal / this._candles.length) * 100;
-        winRateBeforeFirstHit = (winRateBeforeFirstHit / winRateBeforeFirstHit) * 100;
-        winRateBetweenHits.forEach(winRate => {
-            winRate = winRate / hitRate;
-        });
-        firstOrderWinRate = (firstOrderWinRate / this._candles.length) * 100;
-        firstMgWinRate = (firstMgWinRate / this._candles.length) * 100;
-        secondMgWinRate = (secondMgWinRate / this._candles.length) * 100;
-        hitRate = (hitRate / this._candles.length) * 100;
+        firstOrderWinRate = (firstOrderWinRate / winRateFinal) * 100;
+        firstMgWinRate = (firstMgWinRate / winRateFinal) * 100;
+        secondMgWinRate = (secondMgWinRate / winRateFinal) * 100;
+        hitRate = (hitRate / ((this._candles.length) / 5) * 100);
         winRateAfterHit = (winRateAfterHit / hitRate) * 100;
         firstOrderWinRateAfterHit = (firstOrderWinRateAfterHit / hitRate) * 100;
         firstMgWinRateAfterHit = (firstMgWinRateAfterHit / hitRate) * 100;
         secondMgWinRateAfterHit = (secondMgWinRateAfterHit / hitRate) * 100;
         hitAfterHit = (hitAfterHit / hitRate) * 100;
+        winRateFinal = (winRateFinal / ((this._candles.length) / 5) * 100);
+        winRateBeforeFirstHit = (winRateBeforeFirstHit / winRateBeforeFirstHit) * 100;
+        winRateBetweenHits.forEach(winRate => {
+            winRate = (winRate / hitRate) * 100;
+        });
+
 
         this._mhi.inputData(this._candles.length, winRateFinal, winRateBeforeFirstHit, winRateBetweenHits,
             firstOrderWinRate, firstMgWinRate, secondMgWinRate, hitRate, winRateAfterHit, firstOrderWinRateAfterHit,
