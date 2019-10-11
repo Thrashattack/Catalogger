@@ -1,11 +1,14 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import Controller from '../controller/Controller';
+import cors from 'cors';
 
 
 const app = express();
 const port = 80;
-
+app.use(cors({
+    origin: 'http://gradweb.facom.ufms.br/'
+}))
 app.use(bodyParser.json());
 app.route('/').get((_, res) => {
     res.status(200);
