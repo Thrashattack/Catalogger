@@ -55,106 +55,97 @@
 
 - Exemplo: 
 ```json
-    {
-        [
-            "1": "verde",
-            "2": "vermelha,
-            "3": "cinza",
-            "...": ...,
-            "100": "verde"
-        ]
-    } 
+    [
+        { "cor": "R" }, { "cor": "G" }, { "cor": "G" }, { "cor": "N" }, { "cor": "G" },
+        { "cor": "R" }, { "cor": "R" }, { "cor": "R" }, { "cor": "R" }, { "cor": "R" },
+        { "cor": "R" }, { "cor": "G" }, { "cor": "R" }, { "cor": "R" }, { "cor": "R" },
+        { "cor": "R" }, { "cor": "G" }, { "cor": "G" }, { "cor": "G" }, { "cor": "R" },
+        { "cor": "G" }, { "cor": "R" }, { "cor": "G" }, { "cor": "R" }, { "cor": "G" },
+        { "cor": "R" }, { "cor": "G" }, { "cor": "G" }, { "cor": "G" }, { "cor": "R" },
+        { "cor": "R" }, { "cor": "R" }, { "cor": "G" }, { "cor": "G" }, { "cor": "G" },
+        { "cor": "R" }, { "cor": "G" }, { "cor": "G" }, { "cor": "G" }, { "cor": "R" },
+        { "cor": "R" }, { "cor": "G" }, { "cor": "G" }, { "cor": "R" }, { "cor": "G" },
+        { "cor": "R" }, { "cor": "R" }, { "cor": "R" }, { "cor": "R" }, { "cor": "G" },
+        { "cor": "R" }, { "cor": "R" }, { "cor": "G" }, { "cor": "G" }, { "cor": "N" },
+        { "cor": "G" }, { "cor": "R" }, { "cor": "R" }, { "cor": "R" }, { "cor": "G" },
+        { "cor": "G" }, { "cor": "G" }, { "cor": "R" }, { "cor": "R" }, { "cor": "R" },
+        { "cor": "G" }, { "cor": "R" }, { "cor": "G" }, { "cor": "R" }, { "cor": "R" },
+        { "cor": "G" }, { "cor": "G" }, { "cor": "R" }, { "cor": "G" }, { "cor": "R" },
+        { "cor": "R" }, { "cor": "R" }, { "cor": "G" }, { "cor": "R" }, { "cor": "R" },
+        { "cor": "G" }, { "cor": "G" }, { "cor": "G" }, { "cor": "G" }, { "cor": "G" },
+        { "cor": "G" }, { "cor": "R" }, { "cor": "G" }, { "cor": "R" }, { "cor": "G" },
+        { "cor": "R" }, { "cor": "G" }, { "cor": "G" }, { "cor": "R" }, { "cor": "R" },
+        { "cor": "R" }, { "cor": "R" }, { "cor": "R" }, { "cor": "G" }, { "cor": "G" },
+        { "cor": "R" }, { "cor": "R" }, { "cor": "R" }, { "cor": "R" }, { "cor": "R" },
+        { "cor": "G" }, { "cor": "R" }, { "cor": "R" }, { "cor": "R" }, { "cor": "R" },
+        { "cor": "G" }, { "cor": "G" }, { "cor": "G" }, { "cor": "G" }, { "cor": "G" },
+        { "cor": "G" }, { "cor": "G" }, { "cor": "G" }, { "cor": "R" }, { "cor": "N" },
+        { "cor": "G" }, { "cor": "R" }, { "cor": "R" }, { "cor": "G" }, { "cor": "R" },
+        { "cor": "G" }, { "cor": "R" }, { "cor": "G" }, { "cor": "G" }, { "cor": "G" }
+    ]
 ```
 ### Output 
 
 - A api ira devolver todos os valores necessários para uma análise por estratégia validada
 
 ```json 
-    {
-        [
-            "MHI": {
-                "size": "100", 
-                "winRateFinal": "91%", 
-                "winRateBeforeFirstHit": "95%",
-                "winRateBetweenHits": ["95%", "100%", "81%", "99%", "79%", "91%", "91%", "90%" ],
-                "firstOrderWinRate:"66%",
-                "firstMgWinRate ":"12%",
-                "secondMgWinRate ":"15%",
-                "hitRate": "9%",
-                "winRateAfterHit":"100%",
-                "firstOrderWinRateAfterHit:"66%",
-                "firstMgWinRateAfterHit ":"12%",
-                "secondMgWinRateAfterHit ":"15%",
-                "hitAfterHit": "0%",
-                "fiveCandlesBeforeEachHit": [
-                                                [ "verde ", "vermelha ", "verde ", "verde", "verde " ],
-                                                [ "verde ", " verde", " vermelha", " vermelha", "vermelha " ],
-                                                [ " vermelha", " verde", " vermelha", " vermelha", " vermelha" ],
-                                                [ "verde ", "vermelha ", "verde ", "verde", "verde " ],
-                                                [ "verde ", " verde", " vermelha", " vermelha", "vermelha " ],
-                                                [ " vermelha", " verde", " vermelha", " vermelha", " vermelha" ],
-                                                [ "verde ", "vermelha ", "verde ", "verde", "verde " ],
-                                                [ "verde ", " verde", " vermelha", " vermelha", "vermelha " ],
-                                                [ " vermelha", " verde", " vermelha", " vermelha", " vermelha" ]
-                                        ] 
-                
-            },
-            "Estrategia 2": {
-                "size": "100", 
-                "winRateFinal": "91%", 
-                "winRateBeforeFirstHit": "95%",
-                "winRateBetweenHits": ["95%", "100%", "81%", "99%", "79%", "91%", "91%", "90%" ], 
-                "firstOrderWinRate:"66%",
-                "firstMgWinRate ":"12%",
-                "secondMgWinRate ":"15%",
-                "hitRate": "9%",
-                "winRateAfterHit":"100%",
-                "firstOrderWinRateAfterHit:"66%",
-                "firstMgWinRateAfterHit ":"12%",
-                "secondMgWinRateAfterHit ":"15%",
-                "hitAfterHit": "0%",
-                "fiveCandlesBeforeEachHit": [
-                                                [ "verde ", "vermelha ", "verde ", "verde", "verde " ],
-                                                [ "verde ", " verde", " vermelha", " vermelha", "vermelha " ],
-                                                [ " vermelha", " verde", " vermelha", " vermelha", " vermelha" ],
-                                                [ "verde ", "vermelha ", "verde ", "verde", "verde " ],
-                                                [ "verde ", " verde", " vermelha", " vermelha", "vermelha " ],
-                                                [ " vermelha", " verde", " vermelha", " vermelha", " vermelha" ],
-                                                [ "verde ", "vermelha ", "verde ", "verde", "verde " ],
-                                                [ "verde ", " verde", " vermelha", " vermelha", "vermelha " ],
-                                                [ " vermelha", " verde", " vermelha", " vermelha", " vermelha" ]
-                                        ] 
-                
-            },
-            "Estrategia 3": {
-                "size": "100",
-                "winRateFinal": "91%",
-                "winRateBeforeFirstHit": "95%",
-                "winRateBetweenHits": ["95%", "100%", "81%", "99%", "79%", "91%", "91%", "90%" ],
-                "firstOrderWinRate:"66%",
-                "firstMgWinRate ":"12%",
-                "secondMgWinRate ":"15%",
-                "hitRate": "9%",
-                "winRateAfterHit":"100%",
-                "firstOrderWinRateAfterHit:"66%",
-                "firstMgWinRateAfterHit ":"12%",
-                "secondMgWinRateAfterHit ":"15%",
-                "hitAfterHit": "0%",
-                "fiveCandlesBeforeEachHit": [
-                                                [ "verde ", "vermelha ", "verde ", "verde", "verde " ],
-                                                [ "verde ", " verde", " vermelha", " vermelha", "vermelha " ],
-                                                [ " vermelha", " verde", " vermelha", " vermelha", " vermelha" ],
-                                                [ "verde ", "vermelha ", "verde ", "verde", "verde " ],
-                                                [ "verde ", " verde", " vermelha", " vermelha", "vermelha " ],
-                                                [ " vermelha", " verde", " vermelha", " vermelha", " vermelha" ],
-                                                [ "verde ", "vermelha ", "verde ", "verde", "verde " ],
-                                                [ "verde ", " verde", " vermelha", " vermelha", "vermelha " ],
-                                                [ " vermelha", " verde", " vermelha", " vermelha", " vermelha" ]
-                                        ] 
-                
-            },
-        ]
-    } 
+    [
+        {
+            "size": 130,
+            "winRateFinal": 91.3,
+            "winsBeforeFirstHit": 18,
+            "winRateBetweenHits": [
+                null,
+                1,
+                0
+            ],
+            "firstOrderWinRate": 60.87,
+            "firstMgWinRate": 21.74,
+            "secondMgWinRate": 8.7,
+            "hitRate": 8.7,
+            "winRateAfterHit": 100,
+            "firstOrderWinRateAfterHit": 100,
+            "firstMgWinRateAfterHit": 0,
+            "secondMgWinRateAfterHit": 0,
+            "hitAfterHit": 0,
+            "fiveCandlesBeforeEachHit": [
+                [
+                    {
+                        "_cor": 1
+                    },
+                    {
+                        "_cor": 1
+                    },
+                    {
+                        "_cor": 1
+                    },
+                    {
+                        "_cor": 0
+                    },
+                    {
+                        "_cor": 0
+                    }
+                ],
+                [
+                    {
+                        "_cor": 0
+                    },
+                    {
+                        "_cor": 0
+                    },
+                    {
+                        "_cor": 0
+                    },
+                    {
+                        "_cor": 1
+                    },
+                    {
+                        "_cor": 2
+                    }
+                ]
+            ]
+        }
+    ]
 ```
 
 

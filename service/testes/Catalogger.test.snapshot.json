@@ -1,13 +1,57 @@
-{
-    "mhi": {
-        "winRate": 91.67,
-        "firstOrderWinRate": 62.50,
-        "firstMGWinRate": 20.83,
-        "secondMGWinRate": 8.33,
-        "Hits": 8.33,
+[
+    {
+        "size": 130,
+        "winRateFinal": 91.3,
+        "winsBeforeFirstHit": 18,
+        "winRateBetweenHits": [
+            null,
+            1,
+            0
+        ],
+        "firstOrderWinRate": 60.87,
+        "firstMgWinRate": 21.74,
+        "secondMgWinRate": 8.7,
+        "hitRate": 8.7,
         "winRateAfterHit": 100,
-        "firstOrderAfterHitWinRate": 100,
-        "firstMGOrderAfterHitWinRate": 0,
-        "SecondMGOrderAfterHitWinRate": 0
+        "firstOrderWinRateAfterHit": 100,
+        "firstMgWinRateAfterHit": 0,
+        "secondMgWinRateAfterHit": 0,
+        "hitAfterHit": 0,
+        "fiveCandlesBeforeEachHit": [
+            [
+                {
+                    "_cor": 1
+                },
+                {
+                    "_cor": 1
+                },
+                {
+                    "_cor": 1
+                },
+                {
+                    "_cor": 0
+                },
+                {
+                    "_cor": 0
+                }
+            ],
+            [
+                {
+                    "_cor": 0
+                },
+                {
+                    "_cor": 0
+                },
+                {
+                    "_cor": 0
+                },
+                {
+                    "_cor": 1
+                },
+                {
+                    "_cor": 2
+                }
+            ]
+        ]
     }
-}
+]
