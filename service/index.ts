@@ -7,7 +7,7 @@ import cors from 'cors';
 const app = express();
 const port = 80;
 app.use(cors({
-    origin: 'http://gradweb.facom.ufms.br/'
+    origin: 'http://gradweb.facom.ufms.br'
 }))
 app.use(bodyParser.json());
 app.route('/').get((_, res) => {
