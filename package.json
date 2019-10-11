@@ -8,7 +8,7 @@
     "integrated_test": "ts-node ./tests/integracao.test.ts",
     "dev": "nodemon --watch \"./\" --exec \"ts-node ./service/index.ts\" -e ts",
     "build": "tsc",
-    "prod": "yarn build && node build/index.js",
+    "production": "yarn build && node ./build/service/index.js",
     "build_doc": "apidoc -i ./ -o doc/",
     "run_doc_linux": "firefox doc/index.html",
     "run_doc_windows": "doc/index.html"

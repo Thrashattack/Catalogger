@@ -4,9 +4,13 @@ import Controller from '../controller/Controller';
 
 
 const app = express();
-const port = 3001;
+const port = 80;
 
 app.use(bodyParser.json());
+app.route('/').get((_, res) => {
+    res.status(200);
+    res.send("It Works!");
+});
 app.route('/').post(Controller.post);
 app.listen(port, () => {
     console.log("[SERVICE] Catalogger service for TradeLog ==> Running At: http://localhost:" + port);

@@ -1,6 +1,11 @@
 # Microserviço de Catalogação de Velas de Day Trade
 # Aplicação de Estratégias e Geração de Relatórios 
 
+
+
+## Link da Api 
+` http://catalog-env.dit82d6cgu.us-east-2.elasticbeanstalk.com/ `
+
 ### Requisitos
 
 > Node.js
