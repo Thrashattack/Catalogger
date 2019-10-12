@@ -123,10 +123,13 @@ export default class Catalogger {
         firstOrderWinRateAfterHit = Number.parseFloat(((firstOrderWinRateAfterHit / winRateAfterHit) * 100.00).toFixed(2));
         firstMgWinRateAfterHit = Number.parseFloat(((firstMgWinRateAfterHit / winRateAfterHit) * 100.00).toFixed(2));
         secondMgWinRateAfterHit = Number.parseFloat(((secondMgWinRateAfterHit / winRateAfterHit) * 100.00).toFixed(2));
-        winRateAfterHit = Number.parseFloat(((winRateAfterHit / count2) * 100.00).toFixed(2));
+        winRateAfterHit = Number.parseFloat(((winRateAfterHit / Math.abs(winRateAfterHit - hitAfterHit)) * 100.00).toFixed(2));
         hitAfterHit = Number.parseFloat(((hitAfterHit / hitRate) * 100.00).toFixed(2));
         winRateFinal = Number.parseFloat(((winRateFinal / count) * 100.00).toFixed(2));
-        winRateBetweenHits.map(rate => (rate / count2) * 100)
+        for (let n = 0; n < winRateBetweenHits.length; n++) {
+            console.log(winRateBetweenHits[n]);
+            winRateBetweenHits[n] = (winRateBetweenHits[n] / count2) * 100;
+        }
         hitRate = Number.parseFloat(((hitRate / count) * 100.00).toFixed(2));
 
 
