@@ -47,6 +47,7 @@ export default class Catalogger {
         let firstHit = false;
         let wasHit = false;
         let count: number = 0;
+        let count2: number = 0;
         // Contabilização da Estratégia
         candlesByFive.forEach(fiveCandles => {
             let one = fiveCandles[0];
@@ -56,6 +57,7 @@ export default class Catalogger {
                 if (one.cor == theOptionShouldBe) {
                     if (!firstHit) entriesBeforeFirstHit++;
                     if (wasHit) {
+                        count2++;
                         wasHit = false;
                         firstOrderWinRateAfterHit++;
                         winRateAfterHit++;
@@ -67,6 +69,7 @@ export default class Catalogger {
                 } else if (two.cor == theOptionShouldBe) {
                     if (!firstHit) entriesBeforeFirstHit++;
                     if (wasHit) {
+                        count2++;
                         wasHit = false;
                         winRateAfterHit++;
                         firstMgWinRateAfterHit++;
@@ -77,6 +80,7 @@ export default class Catalogger {
                 } else if (three.cor == theOptionShouldBe) {
                     if (!firstHit) entriesBeforeFirstHit++;
                     if (wasHit) {
+                        count2++;
                         wasHit = false;
                         winRateAfterHit++;
                         secondMgWinRateAfterHit++;
@@ -116,7 +120,7 @@ export default class Catalogger {
         firstOrderWinRateAfterHit = Number.parseFloat(((firstOrderWinRateAfterHit / winRateAfterHit) * 100.00).toFixed(2));
         firstMgWinRateAfterHit = Number.parseFloat(((firstMgWinRateAfterHit / winRateAfterHit) * 100.00).toFixed(2));
         secondMgWinRateAfterHit = Number.parseFloat(((secondMgWinRateAfterHit / winRateAfterHit) * 100.00).toFixed(2));
-        winRateAfterHit = Number.parseFloat((((hitAfterHit / hitRate) || 1) * 100.00).toFixed(2));
+        winRateAfterHit = Number.parseFloat(((winRateAfterHit / count2) * 100.00).toFixed(2));
         hitAfterHit = Number.parseFloat(((hitAfterHit / hitRate) * 100.00).toFixed(2));
         winRateFinal = Number.parseFloat(((winRateFinal / count) * 100.00).toFixed(2));
         winRateBetweenHits.map(rate => rate * 100)
