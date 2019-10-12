@@ -91,7 +91,10 @@ export default class Catalogger {
                 } else {
                     fiveCandlesBeforeEachHit[hitRate] = fiveCandles;
                     if (!firstHit) firstHit = true;
-                    if (wasHit) hitAfterHit++;
+                    if (wasHit) {
+                        hitAfterHit++;
+                        count2++;
+                    }
                     wasHit = true;
                     winRateBetweenHits[hitRate] = 0;
                     hitRate++;
