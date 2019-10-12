@@ -35,7 +35,7 @@ var Catalogger = /** @class */ (function () {
         var theOptionShouldBe = 3;
         var winRateFinal = 0;
         var winRateBeforeFirstHit = 0;
-        var winRateBetweenHits = [];
+        var winRateBetweenHits = [0];
         var firstOrderWinRate = 0;
         var firstMgWinRate = 0;
         var secondMgWinRate = 0;
@@ -117,6 +117,7 @@ var Catalogger = /** @class */ (function () {
             else
                 theOptionShouldBe = 3;
         });
+        var entradasValidas = count;
         firstOrderWinRate = Number.parseFloat(((firstOrderWinRate / count) * 100.00).toFixed(2));
         firstMgWinRate = Number.parseFloat(((firstMgWinRate / count) * 100.00).toFixed(2));
         secondMgWinRate = Number.parseFloat(((secondMgWinRate / count) * 100.00).toFixed(2));
@@ -130,7 +131,7 @@ var Catalogger = /** @class */ (function () {
         winRateBetweenHits.forEach(function (winRate) {
             winRate = Number.parseFloat(((winRate / hitRate) * 100.00).toFixed(2));
         });
-        this._mhi.inputData(this._candles.length, winRateFinal, winRateBeforeFirstHit, winRateBetweenHits, firstOrderWinRate, firstMgWinRate, secondMgWinRate, hitRate, winRateAfterHit, firstOrderWinRateAfterHit, firstMgWinRateAfterHit, secondMgWinRateAfterHit, hitAfterHit, fiveCandlesBeforeEachHit);
+        this._mhi.inputData(this._candles.length, entradasValidas, winRateFinal, winRateBeforeFirstHit, winRateBetweenHits, firstOrderWinRate, firstMgWinRate, secondMgWinRate, hitRate, winRateAfterHit, firstOrderWinRateAfterHit, firstMgWinRateAfterHit, secondMgWinRateAfterHit, hitAfterHit, fiveCandlesBeforeEachHit);
     };
     Catalogger.prototype.toResponse = function () {
         var arrResult = [];

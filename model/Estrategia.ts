@@ -1,18 +1,19 @@
 import Candle from './Candle'
 export default class Estrategia {
-    private size: Number = 0;
-    private winRateFinal: Number = 0;
-    private winsBeforeFirstHit: Number = 0;
-    private winRateBetweenHits: Array<Number>;
-    private firstOrderWinRate: Number = 0;
-    private firstMgWinRate: Number = 0;
-    private secondMgWinRate: Number = 0;
-    private hitRate: Number = 0;
-    private winRateAfterHit: Number = 0;
-    private firstOrderWinRateAfterHit: Number = 0;
-    private firstMgWinRateAfterHit: Number = 0;
-    private secondMgWinRateAfterHit: Number = 0;
-    private hitAfterHit: Number = 0;
+    private size: number = 0;
+    private entradasValidas: number = 0;
+    private winRateFinal: number = 0;
+    private winsBeforeFirstHit: number = 0;
+    private winRateBetweenHits: Array<number>;
+    private firstOrderWinRate: number = 0;
+    private firstMgWinRate: number = 0;
+    private secondMgWinRate: number = 0;
+    private hitRate: number = 0;
+    private winRateAfterHit: number = 0;
+    private firstOrderWinRateAfterHit: number = 0;
+    private firstMgWinRateAfterHit: number = 0;
+    private secondMgWinRateAfterHit: number = 0;
+    private hitAfterHit: number = 0;
     private fiveCandlesBeforeEachHit: Array<Array<Candle>>
 
     constructor() {
@@ -20,13 +21,14 @@ export default class Estrategia {
         this.winRateBetweenHits = [];
     }
 
-    public inputData(size: Number, winRateFinal: Number, winsBeforeFirstHit: Number,
-        winRateBetweenHits: Array<Number>, firstOrderWinRate: Number, firstMgWinRate: Number,
-        secondMgWinRate: Number, hitRate: Number, winRateAfterHit: Number,
-        firstOrderWinRateAfterHit: Number, firstMgWinRateAfterHit: Number,
-        secondMgWinRateAfterHit: Number, hitAfterHit: Number, fiveCandlesBeforeEachHit: Array<Array<Candle>>) {
+    public inputData(size: number, entradasValidas: number, winRateFinal: number, winsBeforeFirstHit: number,
+        winRateBetweenHits: Array<number>, firstOrderWinRate: number, firstMgWinRate: number,
+        secondMgWinRate: number, hitRate: number, winRateAfterHit: number,
+        firstOrderWinRateAfterHit: number, firstMgWinRateAfterHit: number,
+        secondMgWinRateAfterHit: number, hitAfterHit: number, fiveCandlesBeforeEachHit: Array<Array<Candle>>) {
 
         this.size = size;
+        this.entradasValidas = entradasValidas;
         this.winRateFinal = winRateFinal;
         this.winsBeforeFirstHit = winsBeforeFirstHit;
         this.winRateBetweenHits = winRateBetweenHits;
@@ -45,8 +47,9 @@ export default class Estrategia {
     get data() {
         return {
             size: this.size,
+            validEntries: this.entradasValidas,
             winRateFinal: this.winRateFinal,
-            winsBeforeFirstHit: this.winsBeforeFirstHit,
+            entriesBeforeFirstHit: this.winsBeforeFirstHit,
             winRateBetweenHits: this.winRateBetweenHits,
             firstOrderWinRate: this.firstOrderWinRate,
             firstMgWinRate: this.firstMgWinRate,

@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Estrategia = /** @class */ (function () {
     function Estrategia() {
         this.size = 0;
+        this.entradasValidas = 0;
         this.winRateFinal = 0;
         this.winsBeforeFirstHit = 0;
         this.firstOrderWinRate = 0;
@@ -17,8 +18,9 @@ var Estrategia = /** @class */ (function () {
         this.fiveCandlesBeforeEachHit = [];
         this.winRateBetweenHits = [];
     }
-    Estrategia.prototype.inputData = function (size, winRateFinal, winsBeforeFirstHit, winRateBetweenHits, firstOrderWinRate, firstMgWinRate, secondMgWinRate, hitRate, winRateAfterHit, firstOrderWinRateAfterHit, firstMgWinRateAfterHit, secondMgWinRateAfterHit, hitAfterHit, fiveCandlesBeforeEachHit) {
+    Estrategia.prototype.inputData = function (size, entradasValidas, winRateFinal, winsBeforeFirstHit, winRateBetweenHits, firstOrderWinRate, firstMgWinRate, secondMgWinRate, hitRate, winRateAfterHit, firstOrderWinRateAfterHit, firstMgWinRateAfterHit, secondMgWinRateAfterHit, hitAfterHit, fiveCandlesBeforeEachHit) {
         this.size = size;
+        this.entradasValidas = entradasValidas;
         this.winRateFinal = winRateFinal;
         this.winsBeforeFirstHit = winsBeforeFirstHit;
         this.winRateBetweenHits = winRateBetweenHits;
@@ -37,8 +39,9 @@ var Estrategia = /** @class */ (function () {
         get: function () {
             return {
                 size: this.size,
+                validEntries: this.entradasValidas,
                 winRateFinal: this.winRateFinal,
-                winsBeforeFirstHit: this.winsBeforeFirstHit,
+                entriesBeforeFirstHit: this.winsBeforeFirstHit,
                 winRateBetweenHits: this.winRateBetweenHits,
                 firstOrderWinRate: this.firstOrderWinRate,
                 firstMgWinRate: this.firstMgWinRate,
