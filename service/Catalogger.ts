@@ -126,7 +126,7 @@ export default class Catalogger {
         winRateAfterHit = Number.parseFloat(((winRateAfterHit / count2) * 100.00).toFixed(2));
         hitAfterHit = Number.parseFloat(((hitAfterHit / hitRate) * 100.00).toFixed(2));
         winRateFinal = Number.parseFloat(((winRateFinal / count) * 100.00).toFixed(2));
-        winRateBetweenHits.map(rate => rate * 100)
+        winRateBetweenHits.map(rate => (rate / count2) * 100)
         hitRate = Number.parseFloat(((hitRate / count) * 100.00).toFixed(2));
 
 
